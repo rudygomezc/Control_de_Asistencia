@@ -17,36 +17,9 @@ Route::get('/', function () {
     
     $empleado = Empleado::all();
 
-    return View::make('welcome')->with('model',$empleado);
-});
-
-Route::get('/empleado/{id?}',function($id){
-    $task = Task::find($id);
-
-    return Response::json($empleado);
-});
-
-Route::post('/empleado',function(Request $request){
-    $task = Task::create($request->all());
-
-    return Response::json($empleado);
-});
-
-Route::put('/empleado/{id?}',function(Request $request,$id){
-    $task = Task::find($id);
-
-    $empleado->name = $request->name;
-    $empleado->telefono = $request->telefono;
-
-    $empleado->save();
-
-    return Response::json($empleado);
-});
-
-Route::delete('/empleado/{id?}',function($id){
-    $empleado = Empleado::destroy($id);
-
-    return Response::json($empleado);
+    return view('/welcome',[
+                'msg' => 0
+            ]);
 });
 
 Route::auth();
@@ -56,3 +29,7 @@ Route::get('/home', 'HomeController@index');
 /* CONTROLAORES*/
 
 Route::controller('asistencia','AsistenciaController');
+Route::controller('personal','PersonalController');
+Route::controller('grupos','GruposController');
+Route::controller('horarios','HorariosController');
+Route::controller('reportes','ReportesController');

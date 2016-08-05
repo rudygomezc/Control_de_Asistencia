@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
-
 use App\Repository\EmpleadoRepository;
 
 class AsistenciaController extends Controller {
@@ -16,7 +15,8 @@ class AsistenciaController extends Controller {
 	}
 
     public function getIndex(){
-        return view('empleado/index', ['model' => $this->empleRepo->listar()
+        return view('empleado/index', [
+            'model' => $this->empleRepo->listar()
         	]);
     }
 
@@ -33,9 +33,10 @@ class AsistenciaController extends Controller {
 
     public function postCrud3(Request $recuest){
     	$this->empleRepo->GuardarAsistencia( $recuest );
-    	//return redirect( '/', $recuest['id'] );
         return view('/welcome',[
-                'model' => $this->empleRepo->obtener3( $recuest )
+                'model' => $this->empleRepo->obtener3( $recuest ),
+                'msg' => 1,
+                'nombre' => $recuest['id']
             ]);
     }
     
@@ -57,7 +58,9 @@ class AsistenciaController extends Controller {
     }
     
     public function getWelcome(  ){
-        return view('empleado/index', ['model' => $this->empleRepo->listar()
+        return view('empleado/index', [
+            'model' => $this->empleRepo->listar(),
+            'msg' => 0
         	]);
     }
     

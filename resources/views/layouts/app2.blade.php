@@ -27,9 +27,9 @@
 </head>
     
 <body id="app-layout">
-    <nav class="navbar navbar-inverse navbar-static-top" >
+    <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
-            <div class="navbar-header"  >
+            <div class="navbar-header">
 
                 <!-- Collapsed Hamburger -->
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
@@ -41,22 +41,64 @@
 
                 <!-- Branding Image -->
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    ...::SIAsistencia::...
+                    .:::Control_de_Asistencia:::.
                 </a>
             </div>
 
 
             <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li><a href="{{ url('/') }}"><span class="glyphicon glyphicon-home"></span> Home</a></li>
                 </ul>
+
+                <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-user">Usuarios <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="">Perfiles</a></li>
+                                    <li><a href="">Usuarios</a></li>
+                                    <li><a href="">Modulos</a></li>
+                                </ul>
+
+                            </li>
+                    </ul>    
+                </ul>
+                
+                <ul class="nav navbar-nav">
+                    <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-briefcase">Personal <span class="caret"></span>
+                                </a>
+
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ url('/personal/index') }}">Personas</a></li>
+                                    <li><a href="{{ url('/grupos/index') }}">Grupos</a></li>
+                                    <li><a href="{{ url('/horarios/index') }}">Horarios</a></li>
+                                    <li><a href="">Establecimientos</a></li>
+                                    <li><a href="">Permisos</a></li>
+                                </ul>
+
+                            </li>
+                    </ul>    
+                </ul>
+
+                <ul class="nav navbar-nav">
+                    <li><a href="{{ url('/reportes/index') }}"><span class="glyphicon glyphicon-equalizer">Reportes</a></li>
+                </ul>                
+                
                 <!-- Right Side Of Navbar -->
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Authentication Links -->
                     @if (Auth::guest())
-                        <li><a href="{{ url('/login') }}"><span class="glyphicon glyphicon-align-justify">Administracion</a></li>
-                        <li><a href="{{ url('/register') }}"><span class="glyphicon glyphicon-user">Register</a></li>
+                        <li><a href="{{ url('/login') }}">Login</a></li>
+                        <li><a href="{{ url('/register') }}">Register</a></li>
                     @else
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -79,5 +121,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     {{-- <script src="{{ elixir('js/app.js') }}"></script> --}}
+    
 </body>
 </html>

@@ -6,11 +6,17 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
+            <div class="panel panel-primary">
                 <div class="panel-heading" style="  " align="center" > .::::Bienvenidos::::.. </div>
                 <div class="panel-body">
                     <body onload="actualizaReloj()">
                         <center>
+                            
+                            @if ( $msg )
+                                <div class="alert alert-success" STYLE="background-color: #32FF6D"> Se guardo correctamente... {{ $nombre }} </div>
+                            @endif
+                            
+                            @yield('content')
                             
                             <form method="post" action="{{ url('asistencia/crud2') }}">
                                 {{ csrf_field() }}

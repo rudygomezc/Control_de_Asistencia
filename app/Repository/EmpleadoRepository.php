@@ -2,7 +2,9 @@
 
 namespace App\Repository;
 
+use DB;
 use App\Empleado;
+use App\Personal;
 use App\asistencia;
 
 class EmpleadoRepository
@@ -20,7 +22,8 @@ class EmpleadoRepository
     }
 
     public function obtener2($data){
-    	return Empleado::find( $data['codigo'] );
+    	$modelo = DB::select('select * from personal where id_personal = ?', [ $data['codigo'] ]);
+        return $modelo;
     }
 
     public function Guardar($data){
@@ -47,11 +50,16 @@ class EmpleadoRepository
     	$asistencia = new asistencia();
         
     	$asistencia->id_personal = $data['id'];
-    	$asistencia->tipo = 'Normal';
-    	$asistencia->subtipo = 'Normal';
+    	if($data['btnsalida'] == 'salida'){
+            $asistencia->tipo = 'Salida';    
+        }else{
+            $asistencia->tipo = 'Entrada';
+        }
+    	$asistencia->subtipo = $data['optsubtipo'];
     	$asistencia->fecha = $data['fecha'];
         $asistencia->hora = $data['hora'];
         
+        //Flash::success("Se ha registrado el usuario ".$asistencia->id_peronal." de manera exitosa!");
         
         $asistencia->save();
     }
